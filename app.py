@@ -1,14 +1,18 @@
-! pip install streamlit -q
-! npm install -g localtunnel
-! pip install pyngrok
-! pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
+# -*- coding: utf-8 -*-
+# ! pip install streamlit -q
+# ! npm install -g localtunnel
+# ! pip install pyngrok
+# ! pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
 
 
-from pyngrok import ngrok
 from parrot import Parrot
 import torch
+import streamlit as st
 import warnings
 warnings.filterwarnings("ignore")
+
+PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
+st.set_page_config(**PAGE_CONFIG)
 
 # For reproducibility
 def random_state(seed):
@@ -17,13 +21,6 @@ def random_state(seed):
     torch.cuda.manual_seed_all(seed)
 
 random_state(1234)
-
-# Commented out IPython magic to ensure Python compatibility.
-%%writefile app.py
-import streamlit as st
-from parrot import Parrot
-import warnings
-warnings.filterwarnings("ignore")
 
 
 def main():
@@ -60,20 +57,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-# substitute private ngrok token for TOKEN below and uncomment
-!ngrok authtoken 232fN5BEH6Z0Bgkh5oQODhJeVFn_4Y8FZuHzMM3TiS3CMLVyC
-
-!streamlit run --server.port 80 app.py &>/dev/null&
-!pgrep streamlit
-
-public_url = ngrok.connect(port='80')
-public_url
-
-# ! python -m http.server 80
-# ! ngrok  http 80
-
-
-
-# !ngrok_kill()
