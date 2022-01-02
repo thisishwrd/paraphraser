@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-# ! pip install streamlit -q
-# ! npm install -g localtunnel
-# ! pip install pyngrok
-# ! pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
-
-
 from parrot import Parrot
 import torch
 import streamlit as st
@@ -13,15 +6,6 @@ warnings.filterwarnings("ignore")
 
 PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
 st.set_page_config(**PAGE_CONFIG)
-
-# For reproducibility
-def random_state(seed):
-  torch.manual_seed(seed)
-  if torch.cuda.is_available():
-    torch.cuda.manual_seed_all(seed)
-
-random_state(1234)
-
 
 def main():
 
@@ -41,23 +25,18 @@ def main():
     st.text("Click the button to see the result")
 
     if st.button('Click for results'):
-      try:
+
         with st.spinner('Running model...'):
-         
-          parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=True)
-          para_phrases = parrot.augment(input_phrase=sentence,
-                                      max_return_phrases = 20)
-          
-        st.text("-"*100)
-        st.text("Paraphrased sentences for '%s'" %(sentence))
-        st.text("-"*100)
-        
-        for para_phrase in para_phrases:
-          st.text(para_phrase[0])
-          
-      except:
-        st.error("Oops! Looks like this algorithm does't work.\
-                  We'll need to fix it!")
-  
+            parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=False)
+            para_phrases = parrot.augment(input_phrase=sentence, max_return_phrases = 20)
+
+            st.text("-"*100)
+            st.text("Paraphrased sentences for '%s'" %(sentence))
+            st.text("-"*100)
+
+            for para_phrase in para_phrases:
+                st.text(para_phrase[0])
+
+
 if __name__ == '__main__':
     main()
