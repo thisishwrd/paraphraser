@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# ! pip install streamlit -q
-# ! npm install -g localtunnel
-# ! pip install pyngrok
-# ! pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
+! pip install streamlit -q
+! npm install -g localtunnel
+! pip install pyngrok
+! pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
 
 
 from parrot import Parrot
@@ -11,8 +11,8 @@ import streamlit as st
 import warnings
 warnings.filterwarnings("ignore")
 
-# PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
-# st.set_page_config(**PAGE_CONFIG)
+PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
+st.set_page_config(**PAGE_CONFIG)
 
 # For reproducibility
 def random_state(seed):
