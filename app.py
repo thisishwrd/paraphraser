@@ -11,8 +11,8 @@ import streamlit as st
 import warnings
 warnings.filterwarnings("ignore")
 
-PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
-st.set_page_config(**PAGE_CONFIG)
+# PAGE_CONFIG = {"page_title":"Paraphraser","page_icon":":smiley:","layout":"centered"}
+# st.set_page_config(**PAGE_CONFIG)
 
 # For reproducibility
 def random_state(seed):
