@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-!pip install streamlit -q
+pip install streamlit -q
 !npm install -g localtunnel
 !pip install pyngrok
 !pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
