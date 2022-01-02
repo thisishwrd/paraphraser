@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # ! pip install streamlit -q
 # ! npm install -g localtunnel
 # ! pip install pyngrok
