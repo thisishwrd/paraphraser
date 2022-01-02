@@ -38,22 +38,22 @@ def main():
     # numbInput = st.slider("Enter the number of new sentences you'd like:", min_value=1, max_value=20, value=1, step=1)
     # numbInput = int(numbInput)
 
-    st.text("Click the button to see the result")
+#     st.text("Click the button to see the result")
 
-    if st.button('Click for results'):
-      st.text("Here we go...")
+#     if st.button('Click for results'):
+#       st.text("Here we go...")
 
-      parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=True)
+#       parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=True)
 
-      para_phrases = parrot.augment(input_phrase=sentence,
-                                      max_return_phrases = 20)
+#       para_phrases = parrot.augment(input_phrase=sentence,
+#                                       max_return_phrases = 20)
 
-      st.text("-"*100)
-      st.text("Paraphrased sentences for '%s'" %(sentence))
-      st.text("-"*100)
+#       st.text("-"*100)
+#       st.text("Paraphrased sentences for '%s'" %(sentence))
+#       st.text("-"*100)
 
-      for para_phrase in para_phrases:
-        st.text(para_phrase[0])
+#       for para_phrase in para_phrases:
+#         st.text(para_phrase[0])
 
 if __name__ == '__main__':
     main()
