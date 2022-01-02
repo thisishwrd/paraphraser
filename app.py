@@ -41,19 +41,23 @@ def main():
     st.text("Click the button to see the result")
 
     if st.button('Click for results'):
-      st.text("Here we go...")
-
-      parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=True)
-
-      para_phrases = parrot.augment(input_phrase=sentence,
+      try:
+        with st.spinner('Running model...'):
+         
+          parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=True)
+          para_phrases = parrot.augment(input_phrase=sentence,
                                       max_return_phrases = 20)
-
-      st.text("-"*100)
-      st.text("Paraphrased sentences for '%s'" %(sentence))
-      st.text("-"*100)
-
-      for para_phrase in para_phrases:
-        st.text(para_phrase[0])
-
+          
+        st.text("-"*100)
+        st.text("Paraphrased sentences for '%s'" %(sentence))
+        st.text("-"*100)
+        
+        for para_phrase in para_phrases:
+          st.text(para_phrase[0])
+          
+      except:
+        st.error("Oops! Looks like this algorithm does't work.\
+                  We'll need to fix it!")
+  
 if __name__ == '__main__':
     main()
